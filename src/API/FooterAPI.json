@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "MdPlace",
+    "title": "Find Me",
+    "details": "Bahadurgarh, Haryana"
+  },
+  {
+    "icon": "IoCallSharp",
+    "title": "Call me",
+    "details": "+91-8506850066"
+  },
+  {
+    "icon": "TbMailPlus",
+    "title": "Mail Me",
+    "details": "akshitmudgal001@gmail.com"
+  }
+]

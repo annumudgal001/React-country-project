@@ -9,8 +9,7 @@
 }
 
 html {
-    font-size: 62.5%;
-    font-family: "urbanist";
+    font-size: 62.5%; /* Base font size for rem units */
 }
 
 body {
@@ -29,7 +28,7 @@ p,
 li,
 a,
 button {
-    font-size: 1.7rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.6rem); /* Scales font size dynamically */
     letter-spacing: 0.1rem;
     line-height: 1.6;
     color: #fff;
@@ -40,7 +39,7 @@ li {
 }
 
 a {
-    color: #000;
+    color: #ffffff;
 
     &:hover {
         color: #2e86c1;
@@ -49,13 +48,13 @@ a {
 
 button {
     display: flex;
-    gap: 1.2rem;
+    gap: clamp(0.8rem, 1vw, 1.2rem);
     align-items: center;
     font-family: inherit;
     font-weight: 500;
     line-height: 1.5;
     cursor: pointer;
-    padding: 0.6rem 2.4rem;
+    padding: clamp(0.4rem, 1vw, 0.6rem) clamp(1.6rem, 2vw, 2.4rem);
     text-align: center;
     outline: none;
     border: none;
@@ -63,22 +62,21 @@ button {
     transition: all 0.3s ease-in-out;
     background: #202020;
     color: #fff;
-    border-radius: 1.5rem;
-    /*thisdoesn'twork*/
+    border-radius: clamp(1rem, 1.5vw, 1.5rem);
     border-width: 0.1rem;
     border-style: solid;
-    -webkit-border-radius: 1.5rem;
-    -moz-border-radius: 1.5rem;
-    -ms-border-radius: 1.5rem;
-    -o-border-radius: 1.5rem;
-    margin-top: 1.6rem;
+    -webkit-border-radius: clamp(1rem, 1.5vw, 1.5rem);
+    -moz-border-radius: clamp(1rem, 1.5vw, 1.5rem);
+    -ms-border-radius: clamp(1rem, 1.5vw, 1.5rem);
+    -o-border-radius: clamp(1rem, 1.5vw, 1.5rem);
+    margin-top: clamp(1rem, 1.5vw, 1.6rem);
 }
 
-/* Layout  */
-
+/* Layout */
 .container {
-    max-width: 140rem;
+    max-width: clamp(90rem, 90vw, 120rem); /* Scales container width */
     margin: auto;
+    padding: 0 clamp(1rem, 2vw, 2rem); /* Responsive padding */
 }
 
 .grid {
@@ -97,31 +95,29 @@ button {
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Layout  */
-
+/* Header */
 header {
-    height: 10rem;
+    height: clamp(8rem, 10vh, 10rem);
     box-shadow: rgba(255, 255, 255, 0.3) 0px 10px 10px -10px;
     background-color: #202020;
     width: 100%;
+}
 
-    & .container {
-        height: 10rem;
-    }
+header .container {
+    height: inherit;
 }
 
 .navbar-grid {
     grid-template-columns: 0.5fr 1fr;
     align-items: center;
-    height: 10rem;
-    padding: 0 3.2rem;
+    height: inherit;
+    padding: 0 clamp(1.6rem, 2vw, 3.2rem);
 }
 
 nav ul {
     display: flex;
     justify-content: flex-end;
-    /* background-color: yellow; */
-    gap: 3.2rem;
+    gap: clamp(1.6rem, 2vw, 3.2rem);
     color: #fff;
 
     & li a {
@@ -133,7 +129,7 @@ nav ul {
     display: none;
 }
 
-/* media queries  */
+/* Media Queries */
 @media screen and (max-width: 998px) {
     .menu-web {
         display: none;
@@ -146,7 +142,7 @@ nav ul {
 
     .menu-mobile {
         position: absolute;
-        top: 10rem;
+        top: clamp(8rem, 10vh, 10rem);
         left: 0;
         background-color: #0d1212;
         width: 100%;
@@ -159,30 +155,29 @@ nav ul {
         align-items: center;
 
         & li:first-child {
-            margin-top: 1.2rem;
+            margin-top: clamp(0.8rem, 1vw, 1.2rem);
         }
 
         & li:last-child {
-            margin-bottom: 1.2rem;
+            margin-bottom: clamp(0.8rem, 1vw, 1.2rem);
         }
     }
 }
 
-/* hero section  */
-
+/* Hero Section */
 .hero-section .container {
-    padding: 3.2rem;
-    margin: 9rem auto;
-    gap: 6.4rem;
+    padding: clamp(1.6rem, 2vw, 3.2rem);
+    margin: clamp(6rem, 8vw, 9rem) auto;
+    gap: clamp(3.2rem, 4vw, 6.4rem);
 }
 
 .paragraph {
-    margin: 3.2rem 0;
+    margin: clamp(1.6rem, 2vw, 3.2rem) 0;
 }
 
 .heading-xl {
     font-family: inherit;
-    font-size: clamp(5.2rem, 6vw, 4.241rem);
+    font-size: clamp(3.2rem, 6vw, 5.2rem);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -1px;
@@ -195,7 +190,9 @@ nav ul {
 }
 
 .container .banner-image {
-    width: 100%;
+    width: auto;
+    height: auto;
+    max-width: clamp(30rem, 80vw, 60rem); /* Responsive image width */
 }
 
 @media screen and (max-width: 990px) {
@@ -204,21 +201,21 @@ nav ul {
     }
 
     .container .banner-image {
-        width: 80%;
+        width: 100%;
+        max-width: clamp(20rem, 80vw, 40rem);
         order: 0;
     }
 }
 
-/* About Section  */
-
+/* About Section */
 .section-about {
-    margin: 0 auto 9rem auto;
+    margin: 0 auto clamp(6rem, 8vw, 9rem) auto;
 }
 
 .gradient-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3.2rem;
+    gap: clamp(1.6rem, 2vw, 3.2rem);
 }
 
 @media screen and (max-width: 991px) {
@@ -230,15 +227,15 @@ nav ul {
 .container-title {
     text-align: center;
     padding: 0 !important;
-    margin-bottom: 40px;
-    font-size: 40px;
+    margin-bottom: clamp(2rem, 3vw, 4rem);
+    font-size: clamp(2.4rem, 4vw, 4rem);
     color: #fff;
     font-weight: 600;
-    line-height: 60px;
+    line-height: clamp(3rem, 5vw, 6rem);
 }
 
 .card {
-    max-width: 55rem;
+    max-width: clamp(30rem, 90vw, 55rem);
     border: 0;
     width: 100%;
     margin-inline: auto;
@@ -249,8 +246,8 @@ nav ul {
     border: 2px solid transparent;
     background: linear-gradient(71deg, #080509, #1a171c, #080509);
     background-clip: padding-box;
-    border-radius: 45px;
-    padding: 40px;
+    border-radius: clamp(2rem, 3vw, 4.5rem);
+    padding: clamp(2rem, 3vw, 4rem);
 }
 
 .bg-green-box,
@@ -271,7 +268,7 @@ nav ul {
     right: -1px;
     content: "";
     z-index: -1;
-    border-radius: 45px;
+    border-radius: clamp(2rem, 3vw, 4.5rem);
 }
 
 .bg-green-box::after {
@@ -294,31 +291,30 @@ nav ul {
     font-weight: 600;
     color: white;
     letter-spacing: -0.02em;
-    line-height: 40px;
+    line-height: clamp(2.4rem, 3vw, 4rem);
     font-style: normal;
-    font-size: 28px;
-    padding-bottom: 8px;
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    padding-bottom: clamp(0.4rem, 1vw, 0.8rem);
 }
 
 .card-description {
     font-weight: 600;
-    line-height: 32px;
+    line-height: clamp(2rem, 2.5vw, 3.2rem);
     color: rgba(255, 255, 255, 0.5);
-    font-size: 16px;
-    max-width: 470px;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    max-width: clamp(30rem, 80vw, 47rem);
 }
 
-/* footer CSS  */
-
+/* Footer CSS */
 .footer-contact {
-    height: 10rem;
+    height: clamp(8rem, 10vh, 10rem);
     display: flex;
-    gap: 2.4rem;
+    gap: clamp(1.6rem, 2vw, 2.4rem);
     align-items: center;
 
     & .icon {
         color: #3a4ed5;
-        font-size: 3.6rem;
+        font-size: clamp(2.4rem, 3vw, 3.6rem);
 
         & .icon:nth-child(2) {
             rotate: 90deg;
@@ -329,15 +325,15 @@ nav ul {
 .footer-contact-text {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: clamp(0.4rem, 1vw, 0.6rem);
 
     & p {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
         color: #757575;
     }
 
     & p:first-child {
-        font-size: 1.7rem;
+        font-size: clamp(1.4rem, 2vw, 1.7rem);
         font-weight: bold;
         color: #fff;
     }
@@ -362,23 +358,23 @@ ul {
 
 .copyright-area {
     background: #202020;
-    padding: 25px 0;
+    padding: clamp(1.5rem, 2vw, 2.5rem) 0;
 }
 
 .copyright-text p {
     margin: 0;
-    font-size: 14px;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
     color: #878787;
 }
 
 .copyright-text p a {
     color: #3a4ed5;
-    margin-left: 0.6rem;
+    margin-left: clamp(0.4rem, 1vw, 0.6rem);
 }
 
 .footer-menu li {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: clamp(1rem, 1.5vw, 2rem);
 }
 
 .footer-menu li:hover a {
@@ -386,38 +382,35 @@ ul {
 }
 
 .footer-menu li a {
-    font-size: 14px;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
     color: #878787;
 }
 
-/* --------------- 
-country Card 
------------------- */
-
+/* Country Card */
 .country-card {
-    margin-top: 3.2rem;
+    margin-top: clamp(1.6rem, 2vw, 3.2rem);
 }
 
 .country-section {
-    margin: 6.4rem auto 9.6rem auto;
+    margin: clamp(4rem, 6vw, 6.4rem) auto clamp(6rem, 8vw, 9.6rem) auto;
 
     & .grid {
-        gap: 3.2rem;
-        max-width: 132rem;
+        gap: clamp(1.6rem, 2vw, 3.2rem);
+        max-width: clamp(90rem, 90vw, 132rem);
         margin: auto;
     }
 
     & img {
         width: 100%;
-        max-width: 50rem;
-        height: 16rem;
+        max-width: clamp(30rem, 80vw, 50rem);
+        height: clamp(12rem, 20vw, 16rem);
     }
 }
 
-/* indivisual card container  */
+/* Individual Card Container */
 .country-details-card {
     max-width: 100%;
-    margin: 6.4rem auto;
+    margin: clamp(4rem, 6vw, 6.4rem) auto;
     box-shadow: rgba(168, 163, 184, 0.15) 0px 48px 100px 0px;
 
     & .container-card {
@@ -427,7 +420,7 @@ country Card
 
         & img {
             width: 100%;
-            max-width: 30rem;
+            max-width: clamp(20rem, 50vw, 30rem);
             margin-bottom: 0;
             height: auto;
             justify-self: center;
@@ -439,7 +432,7 @@ country Card
     & .infoContainer {
         display: flex;
         flex-direction: column;
-        gap: 2.4rem;
+        gap: clamp(1.6rem, 2vw, 2.4rem);
     }
 
     & .country-card-backBtn {
@@ -454,16 +447,16 @@ country Card
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 3.2rem;
+    margin-bottom: clamp(1.6rem, 2vw, 3.2rem);
 
     & .container-card {
-        padding: 0.8rem 2.4rem;
+        padding: clamp(0.6rem, 1vw, 0.8rem) clamp(1.6rem, 2vw, 2.4rem);
         background: linear-gradient(71deg, #080509, #1a171c, #080509);
     }
 
     & input {
         font-family: "urbanist";
-        font-size: 1.55rem;
+        font-size: clamp(1.2rem, 2vw, 1.55rem);
         font-weight: bold;
         letter-spacing: 0.1rem;
         text-transform: capitalize;
@@ -475,14 +468,14 @@ country Card
     & .select-section {
         background: linear-gradient(71deg, #080509, #1a171c, #080509);
         color: rgba(255, 255, 255, 0.8);
-        padding: 0.6rem 2.4rem;
-        border-radius: 5rem;
-        -webkit-border-radius: 5rem;
-        -moz-border-radius: 5rem;
-        -ms-border-radius: 5rem;
-        -o-border-radius: 5rem;
+        padding: clamp(0.4rem, 1vw, 0.6rem) clamp(1.6rem, 2vw, 2.4rem);
+        border-radius: clamp(2rem, 3vw, 5rem);
+        -webkit-border-radius: clamp(2rem, 3vw, 5rem);
+        -moz-border-radius: clamp(2rem, 3vw, 5rem);
+        -ms-border-radius: clamp(2rem, 3vw, 5rem);
+        -o-border-radius: clamp(2rem, 3vw, 5rem);
         font-family: "urbanist";
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
         font-weight: bold;
         letter-spacing: 0.1rem;
         text-transform: capitalize;
@@ -490,33 +483,30 @@ country Card
         & option {
             background: linear-gradient(71deg, #080509, #1a171c, #080509);
             color: rgba(255, 255, 255, 0.8);
-            padding: 0.6rem 2.4rem;
-            border-radius: 5rem;
+            padding: clamp(0.4rem, 1vw, 0.6rem) clamp(1.6rem, 2vw, 2.4rem);
+            border-radius: clamp(2rem, 3vw, 5rem);
         }
     }
 
     & .select-section>option {
         background-color: #080509;
         color: rgba(255, 255, 255, 0.8);
-        padding: 0.6rem 2.4rem;
-        border-radius: 5rem;
-        margin-top: 1rem;
+        padding: clamp(0.4rem, 1vw, 0.6rem) clamp(1.6rem, 2vw, 2.4rem);
+        border-radius: clamp(2rem, 3vw, 5rem);
+        margin-top: clamp(0.6rem, 1vw, 1rem);
     }
 }
 
 ::placeholder {
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
     letter-spacing: 0.1rem;
     text-transform: capitalize;
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* ------------------ 
-contact us page 
---------------- */
-
+/* Contact Us Page */
 .section-contact {
-    margin: 9.6rem auto;
+    margin: clamp(6rem, 8vw, 9.6rem) auto;
 
     & hr {
         border-color: rgba(255, 255, 255, 0.6);
@@ -530,62 +520,32 @@ contact us page
     & form {
         display: flex;
         flex-direction: column;
-        gap: 3.2rem;
+        gap: clamp(1.6rem, 2vw, 3.2rem);
         width: 100%;
-        max-width: 48rem;
+        max-width: clamp(30rem, 80vw, 48rem);
 
         & input,
         & textarea {
             font-family: "urbanist";
             background-color: #000;
-            font-size: 1.6rem;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
             color: #fff;
             outline: none;
             border: 0.1rem solid rgba(255, 255, 255, 0.4);
-            padding: 1.2rem 1.6rem;
-            border-radius: 0.3rem;
-            -webkit-border-radius: 0.3rem;
-            -moz-border-radius: 0.3rem;
-            -ms-border-radius: 0.3rem;
-            -o-border-radius: 0.3rem;
+            padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 1.5vw, 1.6rem);
+            border-radius: clamp(0.2rem, 0.5vw, 0.3rem);
+            -webkit-border-radius: clamp(0.2rem, 0.5vw, 0.3rem);
+            -moz-border-radius: clamp(0.2rem, 0.5vw, 0.3rem);
+            -ms-border-radius: clamp(0.2rem, 0.5vw, 0.3rem);
+            -o-border-radius: clamp(0.2rem, 0.5vw, 0.3rem);
         }
     }
 }
 
-/* ----------------
-contact us Page ends here 
---------------------- */
-
-@media screen and (max-width: 1320px) {
-    .grid-four-cols {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (max-width: 980px) {
-    .grid-four-cols {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 760px) {
-
-    .grid-four-cols,
-    .grid-three-cols,
-    .grid-two-cols {
-        grid-template-columns: 1fr;
-    }
-
-    .grid--cols {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* //Loader  */
-/* HTML: <div class="loader"></div> */
+/* Loader */
 .loader {
-    width: 50px;
-    padding: 8px;
+    width: clamp(3rem, 5vw, 5rem);
+    padding: clamp(0.4rem, 1vw, 0.8rem);
     aspect-ratio: 1;
     border-radius: 50%;
     background: #25b09b;
@@ -616,40 +576,40 @@ contact us Page ends here
     align-items: center;
     min-height: 100vh;
     background-color: #000000;
-    padding: 20px;
+    padding: clamp(1rem, 2vw, 2rem);
 }
 
 .error-content {
     text-align: center;
-    max-width: 600px;
-    padding: 40px;
+    max-width: clamp(30rem, 80vw, 60rem);
+    padding: clamp(2rem, 3vw, 4rem);
     background: rgb(224, 221, 221);
-    border-radius: 10px;
+    border-radius: clamp(0.5rem, 1vw, 1rem);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .error-icon {
-    font-size: 5rem;
+    font-size: clamp(3rem, 5vw, 5rem);
     color: #dc3545;
-    margin-bottom: 20px;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #000000;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: clamp(0.5rem, 1vw, 1rem);
+    color: #ffffff;
 }
 
 h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #000000;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+    color: #ffffff;
 }
 
 p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #000000;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: clamp(1.5rem, 2vw, 3rem);
+    color: #ffffff;
 }
 
 .error-details {
@@ -659,11 +619,11 @@ p {
 
 .home-link {
     display: inline-block;
-    padding: 12px 24px;
+    padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.6rem, 2vw, 2.4rem);
     background-color: #007bff;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: clamp(0.3rem, 0.5vw, 0.5rem);
     font-weight: bold;
     transition: background-color 0.3s;
 }
@@ -672,17 +632,63 @@ p {
     background-color: #279e54;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
+@media (max-width: 1320px) {
+    .grid-four-cols {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 980px) {
+    .grid-four-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .grid-four-cols,
+    .grid-three-cols,
+    .grid-two-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .grid--cols {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .error-content {
-        padding: 20px;
+        padding: clamp(1rem, 2vw, 2rem);
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+}
+
+/* Additional Media Query for Smaller Screens */
+@media (max-width: 480px) {
+    html {
+        font-size: 55%; /* Slightly smaller base font for small screens */
+    }
+
+    .navbar-grid {
+        grid-template-columns: 1fr;
+        justify-items: end;
+    }
+
+    .hero-section .container {
+        padding: clamp(1rem, 2vw, 2rem);
+        margin: clamp(4rem, 6vw, 6rem) auto;
+    }
+
+    .section-searchFilter {
+        flex-direction: column;
+        gap: clamp(1rem, 2vw, 1.6rem);
     }
 }
