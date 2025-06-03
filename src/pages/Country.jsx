@@ -1,30 +1,66 @@
-import React, { useEffect, useState, useTransition } from 'react'
-import getCountryData from '../API/postAPI.jsx'
-import Loader from '../components/UI/loader.jsx'
+import React, { useEffect, useState, useTransition } from 'react';
+import { getCountryData } from '../API/postAPI.jsx';
+import { Loader } from '../components/UI/loader.jsx';
+import { CountryCard } from '../components/layout/CountryCard.jsx';
+import { SearchFilter } from '../components/UI/SearchFilter.jsx';
 
 export const Country = () => {
-  const [ispending, startTransition] = useTransition();
-  const [countries, setcountries] = useState([])
+  const [countries, setCountries] = useState([]);
+  const [isPending, startTransition] = useTransition();
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    startTransition(async () => {
-      const res = await getCountryData();
-      setcountries(res.data);
-    })
-  }, [])
+    const fetchData = async () => {
+      try {
+        const res = await getCountryData();
+        startTransition(() => {
+          setCountries(res.data);
+        });
+      } catch (error) {
+        console.error('Error fetching country data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
-  if (ispending) return <Loader />;
+  if (isPending) {
+    return (
+      <div className="loader-section">
+        <Loader />
+      </div>
+    );
+  }
+
+  const searchCountry = (country) => {
+    if (search) {
+      return country.name.common.toLowerCase().includes(search.toLowerCase());
+    }
+    return true;
+  };
+
+  const filterRegion = (country) => {
+    if (filter === 'all') return true;
+    return country.region.toLowerCase() === filter.toLowerCase();
+  };
+
+  const filteredCountries = countries.filter(
+    (country) => searchCountry(country) && filterRegion(country)
+  );
+
   return (
-    <>
-      <section className="country">
-        <ul className="grid-four-cols grid">
-          {
-            countries.map((curcountry,index)=>{
-              return <CountryCard country={curcountry} key={index}/>
-            })
-          }
-        </ul>
-      </section>
-    </>
-  )
-}
+    <section className="country-section">
+      <SearchFilter
+        search={search}
+        setSearch={setSearch}
+        filter={filter}
+        setFilter={setFilter}
+      />
+      <ul className="grid grid-four-cols">
+        {filteredCountries.map((country) => (
+          <CountryCard country={country} key={country.name.common} />
+        ))}
+      </ul>
+    </section>
+  );
+};
