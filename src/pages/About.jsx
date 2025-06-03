@@ -7,7 +7,6 @@ export const About = () => {
       <section className="section-about container ">
         <h2 className="container-title">
           Here are interesting Facts.
-          <br />
           we're proud of
         </h2>
         <div className="gradient-cards">

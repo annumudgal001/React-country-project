@@ -11,7 +11,7 @@ export const HeroSection = () => {
                             Explore the world one Country at a time
                         </h1>
                         <p className="paragraph">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut nisi voluptas, perspiciatis deleniti tenetur doloremque in magnam laboriosam rem. Iste consectetur delectus in debitis voluptas recusandae aliquid iusto, itaque doloribus ab vel, fugit vero.
+                            Embark on a journey through countries, cultures, and captivating facts. From vibrant capitals to unique traditions, WorldAtlas brings the globe to your fingertips. Explore now and uncover the stories that shape our world.
                         </p>
                         <button className="bg-white-box btn btn-darken btn-inline ">
                             <FaLongArrowAltRight />
@@ -19,7 +19,7 @@ export const HeroSection = () => {
                     </div>
                     <div className="hero-image">
                         <img
-                            src="../../public/images/World.jpg"
+                            src="../../public/images/World.png"
                             alt="World map Vector image"
                             className='banner-image'
                         />

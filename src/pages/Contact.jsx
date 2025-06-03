@@ -1,6 +1,13 @@
 import React from 'react';
 
 export const Contact = () => {
+  const handleFormSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+    const formData = new FormData(event.target);
+    const formInputData = Object.fromEntries(formData.entries());
+    console.log(formInputData);
+  };
+
   return (
     <section className="section-contact">
       <div className="container">
@@ -8,33 +15,37 @@ export const Contact = () => {
         <hr />
 
         <div className="contact-wrapper">
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <input
               type="text"
               placeholder="Your Name"
               required
+              name="username"
             />
 
             <input
               type="email"
               placeholder="Your Email"
               required
+              name="email"
             />
 
             <input
               type="text"
               placeholder="Subject"
               required
+              name="subject"
             />
 
             <textarea
               placeholder="Your Message"
-              rows="5"
+              rows="10"
               required
+              name="message"
             ></textarea>
 
             <button type="submit">
-              Send Message
+              Send
             </button>
           </form>
         </div>
