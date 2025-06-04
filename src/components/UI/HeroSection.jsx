@@ -18,7 +18,7 @@ export const HeroSection = () => {
                 </div>
                 <div className="hero-image">
                     <img
-                        src="/images/World.png"
+                        src="/images/World1.jpg"
                         alt="World map vector image"
                         className="banner-image"
                     />

@@ -1,12 +1,23 @@
 import React from 'react';
 
-export const SearchFilter = ({ search, setSearch, filter, setFilter }) => {
+export const SearchFilter = ({ search, setSearch, filter, setFilter, setCountries }) => {
     const handleInputChange = (event) => {
         setSearch(event.target.value);
     };
 
     const handleSelectChange = (event) => {
         setFilter(event.target.value);
+    };
+
+    const sortCountries = (value) => {
+        setCountries((prevCountries) => {
+            const sortedCountries = [...prevCountries].sort((a, b) => {
+                return value === 'asc'
+                    ? a.name.common.localeCompare(b.name.common)
+                    : b.name.common.localeCompare(a.name.common);
+            });
+            return sortedCountries;
+        });
     };
 
     return (
@@ -17,6 +28,8 @@ export const SearchFilter = ({ search, setSearch, filter, setFilter }) => {
                 value={search}
                 onChange={handleInputChange}
             />
+            <button onClick={() => sortCountries('asc')}>Asc</button>
+            <button onClick={() => sortCountries('desc')}>Desc</button>
             <div className="select-section">
                 <select value={filter} onChange={handleSelectChange}>
                     <option value="all">All</option>

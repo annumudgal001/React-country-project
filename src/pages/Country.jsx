@@ -40,7 +40,9 @@ export const Country = () => {
   };
 
   const filterRegion = (country) => {
-    if (filter === 'all') return true;
+    if (filter === 'all') {
+      return true;
+    }
     return country.region.toLowerCase() === filter.toLowerCase();
   };
 
@@ -55,6 +57,7 @@ export const Country = () => {
         setSearch={setSearch}
         filter={filter}
         setFilter={setFilter}
+        setCountries={setCountries}
       />
       <ul className="grid grid-four-cols">
         {filteredCountries.map((country) => (

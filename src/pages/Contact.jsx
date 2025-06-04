@@ -14,6 +14,13 @@ export const Contact = () => {
       <div className="container">
         <h2 className="container-title">Contact Us</h2>
         <hr />
+        <div className="contact-notice">
+          <p className="notice-text">
+            <strong>Notice:</strong> The form submission is temporarily disabled for scheduled maintenance to enhance our contact system. Please try again later or reach out via email at  :   <a href="mailto:annuronitmudgal2@gmail">
+              <b>  support-Team-WorldAtlas</b>
+            </a>.
+          </p>
+        </div>
         <div className="contact-wrapper">
           <form onSubmit={handleFormSubmit}>
             <input
@@ -21,26 +28,30 @@ export const Contact = () => {
               placeholder="Your Name"
               required
               name="username"
+              disabled
             />
             <input
               type="email"
               placeholder="Your Email"
               required
               name="email"
+              disabled
             />
             <input
               type="text"
               placeholder="Subject"
               required
               name="subject"
+              disabled
             />
             <textarea
               placeholder="Your Message"
               rows="10"
               required
               name="message"
+              disabled
             ></textarea>
-            <button type="submit">Send</button>
+            <button type="submit" disabled>Send</button>
           </form>
         </div>
       </div>

@@ -28,20 +28,21 @@ export const Footer = () => {
           );
         })}
       </div>
+      <br />
       <div className="container">
         <div className="footer-menu">
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/country">Country</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/">Home</Link></li><br />
+            <li><Link to="/about">About</Link></li><br />
+            <li><Link to="/country">Country</Link></li><br />
+            <li><Link to="/contact">Contact</Link></li><br />
           </ul>
         </div>
         <div className="copyright-area">
           <div className="copyright-text">
             <p>
               © {new Date().getFullYear()} WorldAtlas. Developed by{' '}
-              <a href="mailto:akshitmudgal001@gmail.com">Akshit Mudgal</a>.
+              <a href="mailto:akshitmudgal001@gmail.com"><strong><u>Akshit Mudgal</u></strong></a>.
             </p>
           </div>
         </div>
